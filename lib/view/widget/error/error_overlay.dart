@@ -11,7 +11,7 @@ class ErrorOverlay {
     return ErrorOverlay._create(context);
   }
 
-  void show(ErrorBundle? error) {
+  void show(ErrorBundle? error, {VoidCallback? onRetry}) {
     if (error == null) {
       return;
     }
@@ -27,10 +27,20 @@ class ErrorOverlay {
             content: Text(Localization.of(context).string(error.stringId)),
             actions: [
               TextButton(
-                child: const Text("OK"),
+                child: Text(Localization.of(context).string('action_ok')),
                 onPressed: () {
                   Navigator.of(_context).pop();
                 },
+              ),
+              Visibility(
+                visible: onRetry != null,
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.of(_context).pop();
+                    onRetry?.call();
+                  },
+                  child: Text(Localization.of(context).string('action_retry')),
+                ),
               ),
             ],
           ),

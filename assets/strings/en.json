@@ -8,5 +8,8 @@
   "error_default": "An error has occurred.",
   "error_timeout": "We are experiencing some temporary problems. Please, try again in a few moments.",
   "error_no_internet": "There is no Internet connection. Check your Wi-Fi or mobile data connection, please.",
-  "error_server": "We are experiencing some problems at this time. Please come back later."
+  "error_server": "We are experiencing some problems at this time. Please come back later.",
+  "action_ok": "OK",
+  "action_cancel": "Cancel",
+  "action_retry": "Retry"
 }
