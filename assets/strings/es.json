@@ -2,7 +2,7 @@
   "app_title": "Flutter MVVM",
   "home_title": "Inicio",
   "about_title": "Acerca de",
-  "about_description": "Ejemplo de MVVM en Flutter",
+  "about_description": "Ejemplo de MVVM en Flutter.\n\nDesarrollado en lenguaje %0s siguiendo los principios de %1s.",
   "sign_out": "Cerrar sesión",
   "error_title": "Error",
   "error_default": "Ha ocurrido un error.",

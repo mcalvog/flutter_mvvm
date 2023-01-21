@@ -12,8 +12,14 @@ class Localization {
   static const LocalizationsDelegate<Localization> delegate =
       _LocalizationDelegate();
 
-  String string(String key) {
-    return _localizedStrings[key] ?? key;
+  String string(String key, {List<String>? params}) {
+    var string = _localizedStrings[key] ?? key;
+
+    for (int i=0; i<(params?.length ?? 0); i++) {
+      string = string.replaceAll('%${i}s', params?[i] ?? '');
+    }
+
+    return string;
   }
 
   Future<bool> load() async {

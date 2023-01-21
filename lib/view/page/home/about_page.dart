@@ -34,13 +34,24 @@ class _AboutPageState extends State<AboutPage>
   Widget build(BuildContext context) {
     super.build(context);
 
-    return Center(
-      child: ElevatedButton(
-        onPressed: () {
-          viewModel.signOut();
-        },
-        child: Text(Localization.of(context).string('sign_out')),
-      ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Text(
+              Localization.of(context)
+                  .string('about_description', params: ['Dart', 'Clean Architecture']),
+              textAlign: TextAlign.center),
+        ),
+        ElevatedButton(
+          onPressed: () {
+            viewModel.signOut();
+          },
+          child: Text(Localization.of(context)
+              .string('sign_out')),
+        )
+      ],
     );
   }
 
