@@ -10,21 +10,24 @@ import 'package:flutter_mvvm/view/errorbuilder/auth_error_builder.dart';
 class AuthViewModel extends BaseViewModel {
   final AuthRepository _authRepository = AuthDataImpl();
 
-  StreamController<ResourceState> loginState =
+  final StreamController<ResourceState> _loginState =
       StreamController<ResourceState>();
+  Stream<ResourceState> get loginState => _loginState.stream;
 
-  StreamController<bool> signOutState = StreamController<bool>();
+  final StreamController<bool> _signOutState = StreamController<bool>();
+  Stream<bool> get signOutState => _signOutState.stream;
 
-  StreamController<bool> authenticatedState = StreamController<bool>();
+  final StreamController<bool> _authenticatedState = StreamController<bool>();
+  Stream<bool> get authenticatedState => _authenticatedState.stream;
 
   Future<void> login(String user, String password) async {
-    loginState.add(ResourceState.loading());
+    _loginState.sink.add(ResourceState.loading());
 
     _authRepository
         .login(user, password)
-        .then((value) => loginState.add(ResourceState.completed(null)))
+        .then((value) => _loginState.sink.add(ResourceState.completed(null)))
         .catchError((e) {
-          loginState.add(ResourceState.error(
+          _loginState.sink.add(ResourceState.error(
               AuthErrorBuilder.create(e, AppAction.SIGN_IN).build()));
         });
   }
@@ -32,20 +35,21 @@ class AuthViewModel extends BaseViewModel {
   Future<void> isAuthenticated() async {
     _authRepository
         .isAuthenticated()
-        .then((value) => authenticatedState.add(value))
-        .onError((error, stackTrace) => authenticatedState.add(false));
+        .then((value) => _authenticatedState.sink.add(value))
+        .onError((error, stackTrace) => _authenticatedState.sink.add(false));
   }
 
   Future<void> signOut() async {
     _authRepository
         .signOut()
-        .then((value) => signOutState.add(true))
-        .onError((error, stackTrace) => signOutState.add(false));
+        .then((value) => _signOutState.sink.add(true))
+        .onError((error, stackTrace) => _signOutState.sink.add(false));
   }
 
   @override
   void dispose() {
-    loginState.close();
-    authenticatedState.close();
+    _loginState.close();
+    _authenticatedState.close();
+    _signOutState.close();
   }
 }

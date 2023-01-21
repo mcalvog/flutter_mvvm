@@ -26,7 +26,7 @@ class _LoginPageState extends State<LoginPage> {
   void initState() {
     super.initState();
 
-    viewModel.loginState.stream.listen((state) {
+    viewModel.loginState.listen((state) {
       switch (state.status) {
         case Status.LOADING:
           LoadingOverlay.of(context).show();

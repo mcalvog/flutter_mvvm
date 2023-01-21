@@ -18,7 +18,7 @@ class _SplashPageState extends State<SplashPage> {
   void initState() {
     super.initState();
 
-    viewModel.authenticatedState.stream.listen((state) {
+    viewModel.authenticatedState.listen((state) {
       switch (state) {
         case true:
           context.navigateReplacing(const HomePage());

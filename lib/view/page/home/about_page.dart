@@ -19,7 +19,7 @@ class _AboutPageState extends State<AboutPage>
   void initState() {
     super.initState();
 
-    viewModel.signOutState.stream.listen((state) {
+    viewModel.signOutState.listen((state) {
       switch (state) {
         case true:
           context.navigateReplacing(const SplashPage());

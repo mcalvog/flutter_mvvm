@@ -11,23 +11,24 @@ import '../../data/artists/artists_data_impl.dart';
 class ArtistsViewModel extends BaseViewModel {
   final ArtistsRepository _artistsRepository = ArtistsDataImpl();
 
-  StreamController<ResourceState> artistsState =
+  final StreamController<ResourceState> _artistsState =
       StreamController<ResourceState>();
+  Stream<ResourceState> get artistsState => _artistsState.stream;
 
   Future<void> fetchArtists() async {
-    artistsState.add(ResourceState.loading());
+    _artistsState.sink.add(ResourceState.loading());
 
     _artistsRepository
         .getArtists()
-        .then((value) => artistsState.add(ResourceState.completed(value)))
+        .then((value) => _artistsState.sink.add(ResourceState.completed(value)))
         .catchError((e) {
-          artistsState.add(ResourceState.error(
+      _artistsState.sink.add(ResourceState.error(
               ArtistsErrorBuilder.create(e, AppAction.GET_ARTISTS).build()));
         });
   }
 
   @override
   void dispose() {
-    artistsState.close();
+    _artistsState.close();
   }
 }

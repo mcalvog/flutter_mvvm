@@ -23,7 +23,7 @@ class _ArtistsPageState extends State<ArtistsPage> with AutomaticKeepAliveClient
   void initState() {
     super.initState();
 
-    viewModel.artistsState.stream.listen((state) {
+    viewModel.artistsState.listen((state) {
       switch (state.status) {
         case Status.LOADING:
           LoadingOverlay.of(context).show();
