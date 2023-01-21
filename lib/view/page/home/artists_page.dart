@@ -36,7 +36,7 @@ class _ArtistsPageState extends State<ArtistsPage> with AutomaticKeepAliveClient
           break;
         case Status.ERROR:
           LoadingOverlay.of(context).hide();
-          ErrorOverlay.of(context).show(state.error);
+          ErrorOverlay.of(context).show(state.error, onRetry: () => viewModel.fetchArtists());
           break;
         default:
           LoadingOverlay.of(context).hide();

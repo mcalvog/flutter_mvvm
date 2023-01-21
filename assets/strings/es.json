@@ -8,5 +8,8 @@
   "error_default": "Ha ocurrido un error.",
   "error_timeout": "Estamos experimentando algunos problemas temporales. Por favor, inténtelo de nuevo en unos minutos.",
   "error_no_internet": "No hay conexión a Internet. Comprueba tu conexión Wi-Fi o de datos móviles, por favor.",
-  "error_server": "Estamos experimentando algunos problemas en este momento. Por favor, vuelva de nuevo mas tarde."
+  "error_server": "Estamos experimentando algunos problemas en este momento. Por favor, vuelva de nuevo mas tarde.",
+  "action_ok": "Aceptar",
+  "action_cancel": "Cancelar",
+  "action_retry": "Reintentar"
 }
