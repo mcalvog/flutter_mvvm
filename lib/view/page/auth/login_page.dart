@@ -6,6 +6,7 @@ import 'package:flutter_mvvm/view/widget/error/error_overlay.dart';
 import 'package:flutter_mvvm/view/widget/loading/loading_overlay.dart';
 
 import '../../base/resource_state.dart';
+import '../../common/localization/localization.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -51,7 +52,7 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text("Login"),
+        title: Text(Localization.of(context).string('sign_in')),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -67,14 +68,14 @@ class _LoginPageState extends State<LoginPage> {
                   keyboardType: TextInputType.text,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Email can not be empty';
+                      return Localization.of(context).string('error_empty_field');
                     }
                     return null;
                   },
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Username',
-                    hintText: 'Enter your username',
+                  decoration: InputDecoration(
+                    border: const OutlineInputBorder(),
+                      labelText: Localization.of(context).string('sign_in_username'),
+                      hintText: Localization.of(context).string('sign_in_username_hint'),
                   ),
                 ),
               ),
@@ -87,14 +88,14 @@ class _LoginPageState extends State<LoginPage> {
                   obscureText: _passwordHidden,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Password can not be empty';
+                      Localization.of(context).string('error_empty_field');
                     }
                     return null;
                   },
                   decoration: InputDecoration(
                     border: const OutlineInputBorder(),
-                    labelText: 'Password',
-                    hintText: 'Enter your password',
+                      labelText: Localization.of(context).string('sign_in_password'),
+                      hintText: Localization.of(context).string('sign_in_password_hint'),
                     suffixIcon: InkWell(
                       onTap: _togglePasswordView,
                       child: Icon(
@@ -117,7 +118,7 @@ class _LoginPageState extends State<LoginPage> {
                         passwordFieldController.text);
                   }
                 },
-                child: const Text('Login'),
+                child: Text(Localization.of(context).string('sign_in')),
               ),
             ],
           ),
