@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class LoadingOverlay {
+  static var isLoading = false;
   BuildContext _context;
 
   LoadingOverlay._create(this._context);
@@ -9,11 +10,9 @@ class LoadingOverlay {
     return LoadingOverlay._create(context);
   }
 
-  void hide() {
-    Navigator.of(_context).pop();
-  }
+  void show() async {
+    if (isLoading) return;
 
-  void show() {
     showDialog(
       context: _context,
       barrierDismissible: false,
@@ -24,5 +23,13 @@ class LoadingOverlay {
         );
       },
     );
+
+    isLoading = true;
+  }
+
+  void hide() {
+    if (!isLoading) return;
+    Navigator.of(_context).pop();
+    isLoading = false;
   }
 }
