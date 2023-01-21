@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mvvm/view/common/localization/localization.dart';
-import 'package:flutter_mvvm/view/common/widget_extensions.dart';
+import 'package:flutter_mvvm/view/common/navigation/navigation_extensions.dart';
 import 'package:flutter_mvvm/view/page/splash/splash_page.dart';
 import 'package:flutter_mvvm/view/viewmodel/auth_view_model.dart';
 
@@ -40,16 +40,15 @@ class _AboutPageState extends State<AboutPage>
         Padding(
           padding: const EdgeInsets.all(16.0),
           child: Text(
-              Localization.of(context)
-                  .string('about_description', params: ['Dart', 'Clean Architecture']),
+              Localization.of(context).string('about_description',
+                  params: ['Dart', 'Clean Architecture']),
               textAlign: TextAlign.center),
         ),
         ElevatedButton(
           onPressed: () {
             viewModel.signOut();
           },
-          child: Text(Localization.of(context)
-              .string('sign_out')),
+          child: Text(Localization.of(context).string('sign_out')),
         )
       ],
     );

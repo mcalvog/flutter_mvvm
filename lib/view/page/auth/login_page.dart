@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mvvm/view/common/widget_extensions.dart';
+import 'package:flutter_mvvm/view/common/navigation/navigation_extensions.dart';
 import 'package:flutter_mvvm/view/page/home/home_page.dart';
 import 'package:flutter_mvvm/view/viewmodel/auth_view_model.dart';
 import 'package:flutter_mvvm/view/widget/error/error_overlay.dart';
@@ -68,14 +68,17 @@ class _LoginPageState extends State<LoginPage> {
                   keyboardType: TextInputType.text,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return Localization.of(context).string('error_empty_field');
+                      return Localization.of(context)
+                          .string('error_empty_field');
                     }
                     return null;
                   },
                   decoration: InputDecoration(
                     border: const OutlineInputBorder(),
-                      labelText: Localization.of(context).string('sign_in_username'),
-                      hintText: Localization.of(context).string('sign_in_username_hint'),
+                    labelText:
+                        Localization.of(context).string('sign_in_username'),
+                    hintText: Localization.of(context)
+                        .string('sign_in_username_hint'),
                   ),
                 ),
               ),
@@ -94,8 +97,10 @@ class _LoginPageState extends State<LoginPage> {
                   },
                   decoration: InputDecoration(
                     border: const OutlineInputBorder(),
-                      labelText: Localization.of(context).string('sign_in_password'),
-                      hintText: Localization.of(context).string('sign_in_password_hint'),
+                    labelText:
+                        Localization.of(context).string('sign_in_password'),
+                    hintText: Localization.of(context)
+                        .string('sign_in_password_hint'),
                     suffixIcon: InkWell(
                       onTap: _togglePasswordView,
                       child: Icon(

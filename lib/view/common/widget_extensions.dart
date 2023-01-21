@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-extension NavigationExtensions on BuildContext {
-  void navigateTo(Widget widget) {
-    Navigator.push(this, MaterialPageRoute(builder: (_) => widget));
+extension WidgetExtensions on BuildContext {
+
+  void showSnackBar(String message) {
+    ScaffoldMessenger.of(this).showSnackBar(SnackBar(
+      content: Text(message),
+    ));
   }
 
-  void navigateReplacing(Widget widget) {
-    Navigator.pushReplacement(this, MaterialPageRoute(builder: (_) => widget));
-  }
 }
