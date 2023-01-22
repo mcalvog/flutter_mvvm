@@ -7,6 +7,7 @@ import 'package:flutter_mvvm/view/widget/loading/loading_overlay.dart';
 
 import '../../base/resource_state.dart';
 import '../../common/localization/localization.dart';
+import '../../common/resources/app_dimens.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -60,7 +61,7 @@ class _LoginPageState extends State<LoginPage> {
           key: _formKey,
           child: Column(
             children: [
-              const SizedBox(height: 32),
+              const SizedBox(height: AppDimens.bigMargin),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: TextFormField(
@@ -82,7 +83,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: AppDimens.mediumMargin),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: TextFormField(
@@ -112,7 +113,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
               ),
-              const SizedBox(height: 24),
+              const SizedBox(height: AppDimens.semiBigMargin),
               ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {

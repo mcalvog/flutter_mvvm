@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_mvvm/view/common/localization/localization.dart';
+import 'package:flutter_mvvm/view/common/resources/app_styles.dart';
 import 'package:flutter_mvvm/view/page/splash/splash_page.dart';
 
 void main() {
@@ -15,17 +16,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter MVVM',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        useMaterial3: true,
-      ).copyWith(
-        pageTransitionsTheme: const PageTransitionsTheme(
-          builders: <TargetPlatform, PageTransitionsBuilder>{
-            TargetPlatform.android: ZoomPageTransitionsBuilder(),
-            TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
-          },
-        ),
-      ),
+      theme: AppStyles.appTheme,
+      darkTheme: AppStyles.appDarkTheme,
+      themeMode: ThemeMode.system,
       localizationsDelegates: const [
         Localization.delegate,
         GlobalMaterialLocalizations.delegate,
