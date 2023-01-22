@@ -8,6 +8,7 @@ import 'package:flutter_mvvm/view/widget/loading/loading_overlay.dart';
 import '../../base/resource_state.dart';
 import '../../common/localization/localization.dart';
 import '../../common/resources/app_dimens.dart';
+import '../../di/app_modules.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -17,7 +18,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final AuthViewModel viewModel = AuthViewModel();
+  final viewModel = inject<AuthViewModel>();
 
   bool _passwordHidden = true;
   final _formKey = GlobalKey<FormState>();

@@ -2,7 +2,9 @@ import 'package:flutter_mvvm/data/auth/remote/auth_remote_impl.dart';
 import 'package:flutter_mvvm/domain/auth_repository.dart';
 
 class AuthDataImpl implements AuthRepository {
-  final AuthRemoteImpl _remoteImpl = AuthRemoteImpl();
+  final AuthRemoteImpl _remoteImpl;
+
+  AuthDataImpl(this._remoteImpl);
 
   @override
   Future<void> login(String user, String password) {

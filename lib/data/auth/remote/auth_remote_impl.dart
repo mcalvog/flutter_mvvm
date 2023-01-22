@@ -5,11 +5,13 @@ import 'package:flutter_mvvm/data/remote/network_endpoints.dart';
 import '../../remote/base/error/remote_error_mapper.dart';
 
 class AuthRemoteImpl {
-  final httpClient = HttpClient();
+  final HttpClient _httpClient;
+
+  AuthRemoteImpl(this._httpClient);
 
   Future<void> login(String user, String password) async {
     try {
-      dynamic response = await httpClient.dio.post(
+      dynamic response = await _httpClient.dio.post(
         NetworkEndpoints.loginUrl,
         data: {'user': user, 'password': password},
       );

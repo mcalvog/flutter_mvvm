@@ -3,7 +3,9 @@ import 'package:flutter_mvvm/domain/artists_repository.dart';
 import 'package:flutter_mvvm/model/artist.dart';
 
 class ArtistsDataImpl implements ArtistsRepository {
-  final ArtistsRemoteImpl _remoteImpl = ArtistsRemoteImpl();
+  final ArtistsRemoteImpl _remoteImpl;
+
+  ArtistsDataImpl(this._remoteImpl);
 
   @override
   Future<List<Artist>> getArtists() {

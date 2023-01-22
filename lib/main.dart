@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_mvvm/view/common/localization/localization.dart';
 import 'package:flutter_mvvm/view/common/resources/app_styles.dart';
+import 'package:flutter_mvvm/view/di/app_modules.dart';
 import 'package:flutter_mvvm/view/page/splash/splash_page.dart';
 
 void main() {
+  AppModules().setup(); // Setup dependency injection
   runApp(const MyApp());
 }
 

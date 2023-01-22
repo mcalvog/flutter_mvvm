@@ -5,6 +5,8 @@ import 'package:flutter_mvvm/view/common/resources/app_dimens.dart';
 import 'package:flutter_mvvm/view/page/splash/splash_page.dart';
 import 'package:flutter_mvvm/view/viewmodel/auth_view_model.dart';
 
+import '../../di/app_modules.dart';
+
 class AboutPage extends StatefulWidget {
   const AboutPage({Key? key}) : super(key: key);
 
@@ -14,7 +16,7 @@ class AboutPage extends StatefulWidget {
 
 class _AboutPageState extends State<AboutPage>
     with AutomaticKeepAliveClientMixin {
-  final AuthViewModel viewModel = AuthViewModel();
+  final viewModel = inject<AuthViewModel>();
 
   @override
   void initState() {

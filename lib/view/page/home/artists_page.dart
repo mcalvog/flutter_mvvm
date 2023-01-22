@@ -8,6 +8,8 @@ import 'package:flutter_mvvm/view/viewmodel/artists_view_model.dart';
 import 'package:flutter_mvvm/view/widget/error/error_overlay.dart';
 import 'package:flutter_mvvm/view/widget/loading/loading_overlay.dart';
 
+import '../../di/app_modules.dart';
+
 class ArtistsPage extends StatefulWidget {
   const ArtistsPage({Key? key}) : super(key: key);
 
@@ -17,7 +19,7 @@ class ArtistsPage extends StatefulWidget {
 
 class _ArtistsPageState extends State<ArtistsPage>
     with AutomaticKeepAliveClientMixin {
-  final ArtistsViewModel viewModel = ArtistsViewModel();
+  final viewModel = inject<ArtistsViewModel>();
   List<Artist> data = List.empty();
 
   @override

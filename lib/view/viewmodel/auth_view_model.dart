@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:flutter_mvvm/data/auth/auth_data_impl.dart';
 import 'package:flutter_mvvm/domain/auth_repository.dart';
 import 'package:flutter_mvvm/view/base/base_view_model.dart';
 import 'package:flutter_mvvm/view/base/resource_state.dart';
@@ -8,7 +7,9 @@ import 'package:flutter_mvvm/view/common/errorhandling/app_action.dart';
 import 'package:flutter_mvvm/view/errorbuilder/auth_error_builder.dart';
 
 class AuthViewModel extends BaseViewModel {
-  final AuthRepository _authRepository = AuthDataImpl();
+  final AuthRepository _authRepository;
+
+  AuthViewModel(this._authRepository);
 
   final StreamController<ResourceState> _loginState =
       StreamController<ResourceState>();
@@ -27,9 +28,9 @@ class AuthViewModel extends BaseViewModel {
         .login(user, password)
         .then((value) => _loginState.sink.add(ResourceState.completed(null)))
         .catchError((e) {
-          _loginState.sink.add(ResourceState.error(
-              AuthErrorBuilder.create(e, AppAction.SIGN_IN).build()));
-        });
+      _loginState.sink.add(ResourceState.error(
+          AuthErrorBuilder.create(e, AppAction.SIGN_IN).build()));
+    });
   }
 
   Future<void> isAuthenticated() async {

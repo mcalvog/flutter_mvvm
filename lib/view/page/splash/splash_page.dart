@@ -4,6 +4,8 @@ import 'package:flutter_mvvm/view/page/auth/login_page.dart';
 import 'package:flutter_mvvm/view/page/home/home_page.dart';
 import 'package:flutter_mvvm/view/viewmodel/auth_view_model.dart';
 
+import '../../di/app_modules.dart';
+
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
 
@@ -12,7 +14,7 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
-  final AuthViewModel viewModel = AuthViewModel();
+  final viewModel = inject<AuthViewModel>();
 
   @override
   void initState() {

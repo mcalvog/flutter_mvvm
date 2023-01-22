@@ -5,14 +5,16 @@ import 'package:flutter_mvvm/data/remote/network_endpoints.dart';
 import 'package:flutter_mvvm/model/artist.dart';
 
 class ArtistsRemoteImpl {
-  final artistSerializer = ArtistSerializer();
-  final httpClient = HttpClient();
+  final ArtistSerializer _artistSerializer;
+  final HttpClient _httpClient;
+
+  ArtistsRemoteImpl(this._httpClient, this._artistSerializer);
 
   Future<List<Artist>> getArtists() async {
     try {
-      dynamic response = await httpClient.dio.get(NetworkEndpoints.artistsUrl);
+      dynamic response = await _httpClient.dio.get(NetworkEndpoints.artistsUrl);
 
-      return artistSerializer.listFromJson(response);
+      return _artistSerializer.listFromJson(response);
     } on Exception catch (e) {
       throw RemoteErrorMapper.getException(e);
     }
