@@ -3,6 +3,7 @@
   "home_title": "Home",
   "about_title": "About",
   "about_description": "Flutter MVVM Example Project.\n\nDeveloped in %0s following the %1s principles.",
+  "artists_title": "Artists",
   "sign_in": "Sign in",
   "sign_in_username": "Username",
   "sign_in_username_hint": "Enter your username",

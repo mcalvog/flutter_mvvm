@@ -3,6 +3,7 @@
   "home_title": "Inicio",
   "about_title": "Acerca de",
   "about_description": "Ejemplo de MVVM en Flutter.\n\nDesarrollado en lenguaje %0s siguiendo los principios de %1s.",
+  "artists_title": "Artistas",
   "sign_in": "Iniciar sesión",
   "sign_in_username": "Usuario",
   "sign_in_username_hint": "Introduce tu usuario",

@@ -21,17 +21,10 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        title: Text(Localization.of(context).string('app_title')),
-        centerTitle: true,
-      ),
-      body: SafeArea(
-        child: PageView(
-          physics: const NeverScrollableScrollPhysics(),
-          controller: pageController,
-          children: _pages,
-        ),
+      body: PageView(
+        physics: const NeverScrollableScrollPhysics(),
+        controller: pageController,
+        children: _pages,
       ),
       bottomNavigationBar: _getBottomNavigationBar(),
     );

@@ -1,5 +1,3 @@
-library light_sliver_view;
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -13,6 +11,7 @@ class LightSliverView extends StatefulWidget {
   final List<Widget>? actions;
   final bool? darkModeSupport;
   final bool? useSurfaceTintColor;
+  final Color? backgroundColor;
 
   const LightSliverView(
       {Key? key,
@@ -24,7 +23,8 @@ class LightSliverView extends StatefulWidget {
       this.centerTitle,
       this.actions,
       this.darkModeSupport,
-      this.useSurfaceTintColor})
+      this.useSurfaceTintColor,
+      this.backgroundColor})
       : super(key: key);
 
   @override
@@ -81,10 +81,10 @@ class _LightSliverViewState extends State<LightSliverView> {
             color: _theme,
           ),
           systemOverlayStyle: _systemOverlay,
-          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+          backgroundColor: widget.backgroundColor,
           surfaceTintColor: widget.useSurfaceTintColor == true
               ? Theme.of(context).colorScheme.surfaceTint
-              : Theme.of(context).scaffoldBackgroundColor,
+              : widget.backgroundColor,
           pinned: true,
           expandedHeight: expandedHeight,
           centerTitle: widget.centerTitle ?? false,

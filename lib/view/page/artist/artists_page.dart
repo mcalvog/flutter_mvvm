@@ -8,6 +8,7 @@ import 'package:flutter_mvvm/view/page/artist/viewmodel/artists_view_model.dart'
 import 'package:flutter_mvvm/view/widget/error/error_overlay.dart';
 import 'package:flutter_mvvm/view/widget/loading/loading_overlay.dart';
 
+import '../../common/localization/localization.dart';
 import '../../di/app_modules.dart';
 
 class ArtistsPage extends StatefulWidget {
@@ -55,29 +56,35 @@ class _ArtistsPageState extends State<ArtistsPage>
   Widget build(BuildContext context) {
     super.build(context);
 
-    return RefreshIndicator(
-      child: ListView.builder(
-        itemCount: data.length,
-        itemBuilder: (context, index) {
-          final artist = data[index];
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(Localization.of(context).string('artists_title')),
+        centerTitle: true,
+      ),
+      body: RefreshIndicator(
+        child: ListView.builder(
+          itemCount: data.length,
+          itemBuilder: (context, index) {
+            final artist = data[index];
 
-          return ListTile(
-            title: Text(artist.name),
-            subtitle: Text(artist.title),
-            leading: Hero(
-              tag: artist.id,
-              child: CircleAvatar(
-                backgroundImage: CachedNetworkImageProvider(artist.avatar),
+            return ListTile(
+              title: Text(artist.name),
+              subtitle: Text(artist.title),
+              leading: Hero(
+                tag: artist.id,
+                child: CircleAvatar(
+                  backgroundImage: CachedNetworkImageProvider(artist.avatar),
+                ),
               ),
-            ),
-            onTap: (() =>
-                {context.navigateTo(ArtistDetailPage(artist: artist))}),
-          );
+              onTap: (() =>
+                  {context.navigateTo(ArtistDetailPage(artist: artist))}),
+            );
+          },
+        ),
+        onRefresh: () async {
+          viewModel.fetchArtists();
         },
       ),
-      onRefresh: () async {
-        viewModel.fetchArtists();
-      },
     );
   }
 
