@@ -1,10 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter_mvvm/domain/auth_repository.dart';
-import 'package:flutter_mvvm/view/base/base_view_model.dart';
-import 'package:flutter_mvvm/view/base/resource_state.dart';
+import 'package:flutter_mvvm/view/common/base/base_view_model.dart';
+import 'package:flutter_mvvm/view/common/base/resource_state.dart';
 import 'package:flutter_mvvm/view/common/errorhandling/app_action.dart';
-import 'package:flutter_mvvm/view/errorbuilder/auth_error_builder.dart';
+import 'package:flutter_mvvm/view/page/auth/viewmodel/auth_error_builder.dart';
 
 class AuthViewModel extends BaseViewModel {
   final AuthRepository _authRepository;

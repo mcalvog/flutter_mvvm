@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mvvm/view/common/localization/localization.dart';
-import 'package:flutter_mvvm/view/page/home/about_page.dart';
-import 'package:flutter_mvvm/view/page/home/artists_page.dart';
+import 'package:flutter_mvvm/view/page/about/about_page.dart';
+import 'package:flutter_mvvm/view/page/artist/artists_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);

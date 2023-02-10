@@ -1,10 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mvvm/model/artist.dart';
-import 'package:flutter_mvvm/view/base/resource_state.dart';
+import 'package:flutter_mvvm/view/common/base/resource_state.dart';
 import 'package:flutter_mvvm/view/common/navigation/navigation_extensions.dart';
-import 'package:flutter_mvvm/view/page/detail/artist_detail_page.dart';
-import 'package:flutter_mvvm/view/viewmodel/artists_view_model.dart';
+import 'package:flutter_mvvm/view/page/artist/artist_detail_page.dart';
+import 'package:flutter_mvvm/view/page/artist/viewmodel/artists_view_model.dart';
 import 'package:flutter_mvvm/view/widget/error/error_overlay.dart';
 import 'package:flutter_mvvm/view/widget/loading/loading_overlay.dart';
 

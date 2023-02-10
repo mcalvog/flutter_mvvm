@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mvvm/view/common/navigation/navigation_extensions.dart';
 import 'package:flutter_mvvm/view/page/auth/login_page.dart';
 import 'package:flutter_mvvm/view/page/home/home_page.dart';
-import 'package:flutter_mvvm/view/viewmodel/auth_view_model.dart';
+import 'package:flutter_mvvm/view/page/auth/viewmodel/auth_view_model.dart';
 
 import '../../di/app_modules.dart';
 
