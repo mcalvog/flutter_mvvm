@@ -10,7 +10,7 @@ class ArtistsRemoteImpl {
 
   Future<List<Artist>> getArtists() async {
     try {
-      dynamic response = await _httpClient.dio.get(NetworkEndpoints.artistsUrl);
+      final response = await _httpClient.dio.get(NetworkEndpoints.artistsUrl);
 
       return response.data['items']
           .map<Artist>((data) => Artist.fromJson(data))
