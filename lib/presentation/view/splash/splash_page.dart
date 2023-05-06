@@ -4,7 +4,7 @@ import 'package:flutter_mvvm/presentation/view/auth/login_page.dart';
 import 'package:flutter_mvvm/presentation/view/home/home_page.dart';
 import 'package:flutter_mvvm/presentation/view/auth/viewmodel/auth_view_model.dart';
 
-import '../../di/app_modules.dart';
+import '../../../di/app_modules.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);

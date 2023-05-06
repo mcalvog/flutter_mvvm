@@ -8,7 +8,7 @@ import 'package:flutter_mvvm/presentation/common/widget/loading/loading_overlay.
 import '../../common/base/resource_state.dart';
 import '../../common/localization/localization.dart';
 import '../../common/resources/app_dimens.dart';
-import '../../di/app_modules.dart';
+import '../../../di/app_modules.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);

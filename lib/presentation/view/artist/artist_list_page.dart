@@ -9,7 +9,7 @@ import 'package:flutter_mvvm/presentation/common/widget/error/error_overlay.dart
 import 'package:flutter_mvvm/presentation/common/widget/loading/loading_overlay.dart';
 
 import '../../common/localization/localization.dart';
-import '../../di/app_modules.dart';
+import '../../../di/app_modules.dart';
 
 class ArtistListPage extends StatefulWidget {
   const ArtistListPage({Key? key}) : super(key: key);

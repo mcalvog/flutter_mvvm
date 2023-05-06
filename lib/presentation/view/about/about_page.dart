@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mvvm/presentation/common/localization/localization.dart';
 import 'package:flutter_mvvm/presentation/common/navigation/navigation_extensions.dart';
 import 'package:flutter_mvvm/presentation/common/resources/app_dimens.dart';
-import 'package:flutter_mvvm/presentation/view/splash/splash_page.dart';
 import 'package:flutter_mvvm/presentation/view/auth/viewmodel/auth_view_model.dart';
+import 'package:flutter_mvvm/presentation/view/splash/splash_page.dart';
 
-import '../../di/app_modules.dart';
+import '../../../di/app_modules.dart';
 
 class AboutPage extends StatefulWidget {
   const AboutPage({Key? key}) : super(key: key);
