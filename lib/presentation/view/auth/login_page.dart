@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mvvm/presentation/common/navigation/navigation_extensions.dart';
-import 'package:flutter_mvvm/presentation/view/home/home_page.dart';
-import 'package:flutter_mvvm/presentation/view/auth/viewmodel/auth_view_model.dart';
 import 'package:flutter_mvvm/presentation/common/widget/error/error_overlay.dart';
 import 'package:flutter_mvvm/presentation/common/widget/loading/loading_overlay.dart';
+import 'package:flutter_mvvm/presentation/navigation/navigation_routes.dart';
+import 'package:flutter_mvvm/presentation/view/auth/viewmodel/auth_view_model.dart';
 
+import '../../../di/app_modules.dart';
 import '../../common/base/resource_state.dart';
 import '../../common/localization/localization.dart';
 import '../../common/resources/app_dimens.dart';
-import '../../../di/app_modules.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -36,7 +35,7 @@ class _LoginPageState extends State<LoginPage> {
           break;
         case Status.SUCCESS:
           LoadingOverlay.of(context).hide();
-          context.navigateReplacing(const HomePage());
+          Navigator.pushReplacementNamed(context, NavigationRoutes.homeRoute);
           break;
         case Status.ERROR:
           LoadingOverlay.of(context).hide();

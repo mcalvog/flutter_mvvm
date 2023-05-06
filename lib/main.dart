@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_mvvm/di/app_modules.dart';
 import 'package:flutter_mvvm/presentation/common/localization/localization.dart';
 import 'package:flutter_mvvm/presentation/common/resources/app_styles.dart';
-import 'package:flutter_mvvm/di/app_modules.dart';
-import 'package:flutter_mvvm/presentation/view/splash/splash_page.dart';
+import 'package:flutter_mvvm/presentation/navigation/navigation_routes.dart';
 
 void main() {
   AppModules().setup(); // Setup dependency injection
@@ -21,6 +21,8 @@ class MyApp extends StatelessWidget {
       theme: AppStyles.appTheme,
       darkTheme: AppStyles.appDarkTheme,
       themeMode: ThemeMode.system,
+      initialRoute: NavigationRoutes.initialRoute,
+      routes: NavigationRoutes.routes,
       localizationsDelegates: const [
         Localization.delegate,
         GlobalMaterialLocalizations.delegate,
@@ -31,7 +33,6 @@ class MyApp extends StatelessWidget {
         Locale('en'),
         Locale('es'),
       ],
-      home: const SplashPage(),
       debugShowCheckedModeBanner: false,
     );
   }

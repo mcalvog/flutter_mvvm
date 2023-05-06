@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mvvm/presentation/common/navigation/navigation_extensions.dart';
-import 'package:flutter_mvvm/presentation/view/auth/login_page.dart';
-import 'package:flutter_mvvm/presentation/view/home/home_page.dart';
 import 'package:flutter_mvvm/presentation/view/auth/viewmodel/auth_view_model.dart';
 
 import '../../../di/app_modules.dart';
+import '../../navigation/navigation_routes.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -23,10 +21,10 @@ class _SplashPageState extends State<SplashPage> {
     viewModel.authenticatedState.listen((state) {
       switch (state) {
         case true:
-          context.navigateReplacing(const HomePage());
+          Navigator.pushReplacementNamed(context, NavigationRoutes.homeRoute);
           break;
         case false:
-          context.navigateReplacing(const LoginPage());
+          Navigator.pushReplacementNamed(context, NavigationRoutes.loginRoute);
           break;
       }
     });

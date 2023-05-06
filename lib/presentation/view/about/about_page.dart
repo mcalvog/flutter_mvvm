@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mvvm/presentation/common/localization/localization.dart';
-import 'package:flutter_mvvm/presentation/common/navigation/navigation_extensions.dart';
 import 'package:flutter_mvvm/presentation/common/resources/app_dimens.dart';
+import 'package:flutter_mvvm/presentation/navigation/navigation_routes.dart';
 import 'package:flutter_mvvm/presentation/view/auth/viewmodel/auth_view_model.dart';
-import 'package:flutter_mvvm/presentation/view/splash/splash_page.dart';
 
 import '../../../di/app_modules.dart';
 
@@ -25,7 +24,8 @@ class _AboutPageState extends State<AboutPage>
     viewModel.signOutState.listen((state) {
       switch (state) {
         case true:
-          context.navigateReplacing(const SplashPage());
+          Navigator.pushReplacementNamed(
+              context, NavigationRoutes.initialRoute);
           break;
         default:
           break;

@@ -2,14 +2,14 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mvvm/model/artist.dart';
 import 'package:flutter_mvvm/presentation/common/base/resource_state.dart';
-import 'package:flutter_mvvm/presentation/common/navigation/navigation_extensions.dart';
-import 'package:flutter_mvvm/presentation/view/artist/artist_detail_page.dart';
-import 'package:flutter_mvvm/presentation/view/artist/viewmodel/artists_view_model.dart';
 import 'package:flutter_mvvm/presentation/common/widget/error/error_overlay.dart';
 import 'package:flutter_mvvm/presentation/common/widget/loading/loading_overlay.dart';
+import 'package:flutter_mvvm/presentation/navigation/navigation_routes.dart';
+import 'package:flutter_mvvm/presentation/view/artist/artist_detail_page.dart';
+import 'package:flutter_mvvm/presentation/view/artist/viewmodel/artists_view_model.dart';
 
-import '../../common/localization/localization.dart';
 import '../../../di/app_modules.dart';
+import '../../common/localization/localization.dart';
 
 class ArtistListPage extends StatefulWidget {
   const ArtistListPage({Key? key}) : super(key: key);
@@ -76,8 +76,8 @@ class _ArtistListPageState extends State<ArtistListPage>
                   backgroundImage: CachedNetworkImageProvider(artist.avatar),
                 ),
               ),
-              onTap: (() =>
-                  {context.navigateTo(ArtistDetailPage(artist: artist))}),
+              onTap: (() => Navigator.pushNamed(context, NavigationRoutes.artistDetailRoute,
+                  arguments: ArtistDetailPageArguments(artist))),
             );
           },
         ),
