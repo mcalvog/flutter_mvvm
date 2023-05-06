@@ -26,7 +26,11 @@ class DioLoggingInterceptor extends Interceptor {
     if (err.response != null) {
       debugPrint('Status code: ${err.response?.statusCode.toString()}');
     }
-    printLog('Message', err.message);
+    printLog('Error', err.error ?? '');
+
+    if (err.message != null) {
+      printLog('Message', err.message ?? '');
+    }
 
     debugPrint('--> END HTTP Error');
   }
