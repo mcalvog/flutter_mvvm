@@ -1,43 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mvvm/presentation/common/localization/localization.dart';
-import 'package:flutter_mvvm/presentation/view/about/about_page.dart';
-import 'package:flutter_mvvm/presentation/view/artist/artist_list_page.dart';
+import 'package:flutter_mvvm/presentation/navigation/navigation_routes.dart';
+import 'package:go_router/go_router.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({Key? key, required this.child}) : super(key: key);
+
+  final Widget child;
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  final _pages = [
-    const ArtistListPage(),
-    const AboutPage(),
-  ];
-  final pageController = PageController();
-  int _selectedIndex = 0;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: PageView(
-        physics: const NeverScrollableScrollPhysics(),
-        controller: pageController,
-        children: _pages,
-      ),
+      body: widget.child,
       bottomNavigationBar: _getBottomNavigationBar(),
     );
   }
 
   Widget _getBottomNavigationBar() {
     return NavigationBar(
-      selectedIndex: _selectedIndex,
-      onDestinationSelected: (int index) {
-        setState(() {
-          _selectedIndex = index;
-          pageController.jumpToPage(_selectedIndex);
-        });
+      selectedIndex: _calculateSelectedIndex(context),
+      onDestinationSelected: (index) {
+        switch (index) {
+          case 0:
+            return context.go(NavigationRoutes.artistsRoute);
+          case 1:
+            return context.go(NavigationRoutes.aboutRoute);
+          default:
+            return context.go(NavigationRoutes.artistsRoute);
+        }
       },
       destinations: [
         NavigationDestination(
@@ -50,5 +45,19 @@ class _HomePageState extends State<HomePage> {
         ),
       ],
     );
+  }
+
+  int _calculateSelectedIndex(BuildContext context) {
+    final GoRouter route = GoRouter.of(context);
+    final String location = route.location;
+
+    switch (location) {
+      case NavigationRoutes.artistsRoute:
+        return 0;
+      case NavigationRoutes.aboutRoute:
+        return 1;
+      default:
+        return 0;
+    }
   }
 }

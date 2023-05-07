@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mvvm/presentation/view/auth/viewmodel/auth_view_model.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../di/app_modules.dart';
 import '../../navigation/navigation_routes.dart';
@@ -21,10 +22,10 @@ class _SplashPageState extends State<SplashPage> {
     viewModel.authenticatedState.listen((state) {
       switch (state) {
         case true:
-          Navigator.pushReplacementNamed(context, NavigationRoutes.homeRoute);
+          context.go(NavigationRoutes.artistsRoute);
           break;
         case false:
-          Navigator.pushReplacementNamed(context, NavigationRoutes.loginRoute);
+          context.go(NavigationRoutes.loginRoute);
           break;
       }
     });

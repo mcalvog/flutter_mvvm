@@ -3,6 +3,7 @@ import 'package:flutter_mvvm/presentation/common/widget/error/error_overlay.dart
 import 'package:flutter_mvvm/presentation/common/widget/loading/loading_overlay.dart';
 import 'package:flutter_mvvm/presentation/navigation/navigation_routes.dart';
 import 'package:flutter_mvvm/presentation/view/auth/viewmodel/auth_view_model.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../di/app_modules.dart';
 import '../../common/base/resource_state.dart';
@@ -31,18 +32,18 @@ class _LoginPageState extends State<LoginPage> {
     viewModel.loginState.listen((state) {
       switch (state.status) {
         case Status.LOADING:
-          LoadingOverlay.of(context).show();
+          LoadingOverlay.show(context);
           break;
         case Status.SUCCESS:
-          LoadingOverlay.of(context).hide();
-          Navigator.pushReplacementNamed(context, NavigationRoutes.homeRoute);
+          LoadingOverlay.hide();
+          context.go(NavigationRoutes.artistsRoute);
           break;
         case Status.ERROR:
-          LoadingOverlay.of(context).hide();
+          LoadingOverlay.hide();
           ErrorOverlay.of(context).show(state.error);
           break;
         default:
-          LoadingOverlay.of(context).hide();
+          LoadingOverlay.hide();
           break;
       }
     });

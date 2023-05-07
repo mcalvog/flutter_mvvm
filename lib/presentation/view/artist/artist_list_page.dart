@@ -5,8 +5,8 @@ import 'package:flutter_mvvm/presentation/common/base/resource_state.dart';
 import 'package:flutter_mvvm/presentation/common/widget/error/error_overlay.dart';
 import 'package:flutter_mvvm/presentation/common/widget/loading/loading_overlay.dart';
 import 'package:flutter_mvvm/presentation/navigation/navigation_routes.dart';
-import 'package:flutter_mvvm/presentation/view/artist/artist_detail_page.dart';
 import 'package:flutter_mvvm/presentation/view/artist/viewmodel/artists_view_model.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../di/app_modules.dart';
 import '../../common/localization/localization.dart';
@@ -30,21 +30,21 @@ class _ArtistListPageState extends State<ArtistListPage>
     viewModel.artistsState.listen((state) {
       switch (state.status) {
         case Status.LOADING:
-          LoadingOverlay.of(context).show();
+          LoadingOverlay.show(context);
           break;
         case Status.SUCCESS:
-          LoadingOverlay.of(context).hide();
+          LoadingOverlay.hide();
           setState(() {
             data = state.data!;
           });
           break;
         case Status.ERROR:
-          LoadingOverlay.of(context).hide();
+          LoadingOverlay.hide();
           ErrorOverlay.of(context)
               .show(state.error, onRetry: () => viewModel.fetchArtists());
           break;
         default:
-          LoadingOverlay.of(context).hide();
+          LoadingOverlay.hide();
           break;
       }
     });
@@ -76,8 +76,8 @@ class _ArtistListPageState extends State<ArtistListPage>
                   backgroundImage: CachedNetworkImageProvider(artist.avatar),
                 ),
               ),
-              onTap: (() => Navigator.pushNamed(context, NavigationRoutes.artistDetailRoute,
-                  arguments: ArtistDetailPageArguments(artist))),
+              onTap: (() => context.push(NavigationRoutes.artistDetailRoute,
+                  extra: artist)),
             );
           },
         ),

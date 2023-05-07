@@ -29,14 +29,14 @@ class ErrorOverlay {
               TextButton(
                 child: Text(Localization.of(context).string('action_ok')),
                 onPressed: () {
-                  Navigator.of(_context).pop();
+                  Navigator.of(context).pop();
                 },
               ),
               Visibility(
                 visible: onRetry != null,
                 child: TextButton(
                   onPressed: () {
-                    Navigator.of(_context).pop();
+                    Navigator.of(context).pop();
                     onRetry?.call();
                   },
                   child: Text(Localization.of(context).string('action_retry')),

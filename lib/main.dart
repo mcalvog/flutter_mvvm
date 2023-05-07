@@ -16,13 +16,12 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Flutter MVVM',
       theme: AppStyles.appTheme,
       darkTheme: AppStyles.appDarkTheme,
       themeMode: ThemeMode.system,
-      initialRoute: NavigationRoutes.initialRoute,
-      routes: NavigationRoutes.routes,
+      routerConfig: router,
       localizationsDelegates: const [
         Localization.delegate,
         GlobalMaterialLocalizations.delegate,

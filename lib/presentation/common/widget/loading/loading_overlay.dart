@@ -1,35 +1,26 @@
 import 'package:flutter/material.dart';
 
 class LoadingOverlay {
-  static var isLoading = false;
-  BuildContext _context;
+  static OverlayEntry? _overlay;
 
-  LoadingOverlay._create(this._context);
+  static void show(BuildContext context, {Color? backgroundColor}) {
+    if (_overlay != null) return;
 
-  factory LoadingOverlay.of(BuildContext context) {
-    return LoadingOverlay._create(context);
+    _overlay = OverlayEntry(builder: (BuildContext context) {
+      return Stack(
+        children: [
+          Container(color: backgroundColor ?? Theme.of(context).scaffoldBackgroundColor),
+          const Center(child: CircularProgressIndicator()),
+        ],
+      );
+    });
+
+    Overlay.of(context).insert(_overlay!);
   }
 
-  void show() async {
-    if (isLoading) return;
-
-    showDialog(
-      context: _context,
-      barrierDismissible: false,
-      builder: (BuildContext context) {
-        return WillPopScope(
-          onWillPop: () => Future.value(false),
-          child: const Center(child: CircularProgressIndicator()),
-        );
-      },
-    );
-
-    isLoading = true;
-  }
-
-  void hide() {
-    if (!isLoading) return;
-    Navigator.of(_context).pop();
-    isLoading = false;
+  static hide() {
+    if (_overlay == null) return;
+    _overlay!.remove();
+    _overlay = null;
   }
 }

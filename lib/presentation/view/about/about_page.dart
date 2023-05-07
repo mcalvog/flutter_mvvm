@@ -3,6 +3,7 @@ import 'package:flutter_mvvm/presentation/common/localization/localization.dart'
 import 'package:flutter_mvvm/presentation/common/resources/app_dimens.dart';
 import 'package:flutter_mvvm/presentation/navigation/navigation_routes.dart';
 import 'package:flutter_mvvm/presentation/view/auth/viewmodel/auth_view_model.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../di/app_modules.dart';
 
@@ -24,8 +25,7 @@ class _AboutPageState extends State<AboutPage>
     viewModel.signOutState.listen((state) {
       switch (state) {
         case true:
-          Navigator.pushReplacementNamed(
-              context, NavigationRoutes.initialRoute);
+          context.go(NavigationRoutes.initialRoute);
           break;
         default:
           break;
